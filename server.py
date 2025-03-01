@@ -1,6 +1,10 @@
 from flask import Flask, render_template, request, jsonify
 from waitress import serve
+from dotenv import load_dotenv
 from functions import *
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = Flask(__name__)
 

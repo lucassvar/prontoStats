@@ -5,10 +5,13 @@ import heapq
 import asyncio
 import aiohttp
 import re, json
-from db_config import get_database
+import os
+from pymongo.mongo_client import MongoClient
 
 # Connect to db
-db = get_database()
+uri = os.getenv("MONGODB_URI")
+client = MongoClient(uri)
+db = client['letterboxd']
 
 # Function to convert a value to a star_rating
 def convert_to_stars(rating):
