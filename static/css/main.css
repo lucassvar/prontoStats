@@ -1,0 +1,81 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    height: auto; /* Allow content to exceed the viewport naturally */
+    overflow-y: visible; /* Make sure content flows without being cut */
+    padding-left: 20px; /* Padding on the left of the page */
+}
+
+
+
+
+
+
+/* Input Container */
+.input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Spacing between elements */
+    padding: 10px 20px; /* Add padding to the container */
+    padding-left: 20px;
+}
+
+/* Input Box Styling */
+input[type="text"] {
+    width: 200px; /* Input width */
+    padding: 10px 8px; /* Inner padding */
+    font-size: 0.8rem;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #eeeeee;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Input Focus State */
+input[type="text"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+}
+
+/* Submit Button Styling */
+button {
+    padding: 6px 12px; /* Button padding */
+    font-size: 0.8rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* Button Hover State */
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Button Active State */
+button:active {
+    transform: scale(0.98);
+}
+
+
+
+
+
+@media (max-width: 768px) {
+    body{
+        padding: 0px; /* Padding on the left of the page */
+    }
+
+    label[for="compareInput"] {
+        display: none;
+    }
+
+    .input-container {
+        width: 20px;
+        padding-left: 40px;
+    }
+}

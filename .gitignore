@@ -1,0 +1,7 @@
+.venv
+.env
+db_config.py
+test.py
+test2.py
+__pycache__
+node_modules

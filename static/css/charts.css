@@ -1,0 +1,358 @@
+
+/* Grid */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.item {
+    border: 1px solid #eeeeee;
+    padding: 0px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);  /* Shadow at the bottom and right */
+    min-height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.item1 {
+    grid-column: span 5;
+}
+
+.item2 {
+    grid-column: span 1;
+}
+
+.item3 {
+    grid-column: span 2;
+}
+
+.item4 {
+    grid-column: span 4;
+    padding-top: 30px;
+}
+
+.item5 {
+    grid-column: span 2;
+    height: 420px;
+}
+
+.item6 {
+    grid-column: span 2;
+    height: 420px;
+}
+
+.item7 {
+    grid-column: span 2;
+    height: 420px;
+}
+
+.item8 {
+    grid-column: span 4;
+}
+
+.item9 {
+    grid-column: span 2;
+    grid-row: span 3;
+}
+
+.item10 {
+    grid-column: span 4;
+}
+
+.item11 {
+    grid-column: span 2;
+}
+
+.item12 {
+    grid-column: span 2;
+}
+
+.item13 {
+    grid-column: span 2;
+}
+
+.item14 {
+    grid-column: span 2;
+}
+
+.item15 {
+    grid-column: span 2;
+}
+
+.item16 {
+    grid-column: span 2;
+}
+
+.item17 {
+    grid-column: span 2;
+}
+
+.item18 {
+    grid-column: span 2;
+}
+
+.item19 {
+    grid-column: span 5;
+}
+
+.item20 {
+    grid-column: span 1;
+}
+
+.item21 {
+    grid-column: span 2;
+}
+
+.item22 {
+    grid-column: span 6;
+}
+
+.item23 {
+    grid-column: span 6;
+}
+
+.item24 {
+    grid-column: span 6;
+    height: 600px;
+    padding: 20px;
+}
+
+
+
+
+
+.canvas-container {
+    padding-top: 20px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.plot-titles {
+    font-size: 10px;
+    margin: 0px;
+    top: 0px;
+    left: 0px;
+    align-items: left;
+    position: absolute;
+    padding-top: 25px;
+    padding-left: 20px;
+}
+
+
+
+
+.posters {
+    padding-top: 38px;
+    padding-bottom: 0px;
+}
+
+
+
+
+.plot-button {
+    color: darkgrey;
+    background-color: white;
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin-right: 0px;
+    font-size: 10px;
+}
+
+.plot-button:hover {
+    color: black;
+    background-color: rgb(199, 199, 199);
+    font-weight: bold;
+}
+
+.plot-button.selected {
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.button-container-plots {
+    position: absolute;
+    top: 0px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    text-align: right;
+    margin-bottom: 10px;
+    padding-top: 20px;
+}
+
+
+
+
+
+
+
+
+/* Add spacing below the buttons */
+#compared_topPositiveDiff_button,
+#compared_topNegativeDiff_button {
+    margin-bottom: 15px; /* Adjust as needed */
+}
+
+/* Ensure the containers have spacing from the buttons */
+#compared_topPositiveDiff_id,
+#compared_topNegativeDiff_id {
+    margin-top: 15px; /* Adjust as needed */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Mobile Responsiveness for Canvas and Grid */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Single column layout */
+        gap: 10px; /* Reduce grid gap */
+        padding: 10px;
+    }
+
+    .item {
+        grid-column: span 1;
+        padding: 10px;
+        min-height: auto; /* Adjust height dynamically */
+        overflow: hidden; /* Prevent overflow */
+    }
+
+    .canvas-container {
+        width: 100%;
+        height: 300px; /* Fixed height for smaller screens */
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    canvas {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    .plot-titles {
+        font-size: 10px;
+        padding: 15px;
+        margin: 0;
+    }
+
+    .button-container-plots {
+        top: 0px;
+        right: 0px;
+        padding-top: 10px;
+        padding-right: 5px;
+        position: absolute;
+        gap: 10px;
+    }
+
+    .plot-button {
+        padding: 5px 10px; /* Adjust padding inside buttons */
+    }
+
+
+
+    .item1 {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center-align content */
+        text-align: center; /* Ensure text aligns in the middle */
+    }
+
+    .item4 {
+        height: 250px;
+    }
+
+    .item5 {
+        height: 350px;
+    }
+    
+    .item6 {
+        height: 350px;
+    }
+    
+    .item7 {
+        height: 350px;
+    }
+
+    .item8 {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center-align content */
+        text-align: center; /* Ensure text aligns in the middle */
+    }
+
+    .item10 {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center-align content */
+        text-align: center; /* Ensure text aligns in the middle */
+    }
+
+    .item23 {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center-align content */
+        text-align: center; /* Ensure text aligns in the middle */
+    }
+
+    .item24 {
+        height: 400px; /* Reduce height for mobile */
+        padding: 10px; /* Reduce padding */
+    }
+
+    
+
+
+
+
+
+    #releasesProportions_id {
+        width: 90% !important;  /* Ensure it takes 90% of the container */
+        height: 90% !important;  /* Adjust height if needed */
+    }
+
+    #bestPicWinners_id {
+        width: 80% !important;  /* Ensure it takes 90% of the container */
+        height: 80% !important;  /* Adjust height if needed */
+    }
+
+    #top100Arg_id {
+        width: 80% !important;  /* Ensure it takes 90% of the container */
+        height: 80% !important;  /* Adjust height if needed */
+    }
+
+    #prontoMovies_id {
+        width: 80% !important;  /* Ensure it takes 90% of the container */
+        height: 80% !important;  /* Adjust height if needed */
+    }
+
+    #mapContainer {
+        width: 100%;
+        height: 100%;
+    }
+
+
+}
+
+
+
+

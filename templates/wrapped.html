@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es-419">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pronto Stats</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for ('static', filename='images/favicon.ico') }}">
+
+    <link rel="stylesheet" href="{{ url_for ('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='css/charts.css') }}">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='css/sidebar.css') }}">
+
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body>
+    <!-- Collapsible sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="toggle-btn" id="toggle-btn">☰</div>
+        <nav class="menu">
+            <a href="/" class="menu-item">Home</a>
+            <a href="/ask_data" class="menu-item">Extraer Data</a>
+            <a href="/wrapped" class="menu-item">2024 Wrapped</a>
+            <a href="/letterboxd-stats" class="menu-item">Letterboxd Stats</a>
+        </nav>
+    </div>
+    
+    <!-- Usern input -->
+    <div class="input-container">
+        <form id="dataForm">
+            <label for="userInput">Usuario:</label>
+            <input type="text" id="userInput" placeholder="Usuario" value="stk5">
+            
+            <label for="yearWanted">Año:</label>
+            <input type="text" id="yearWanted" placeholder="Año" value="2024">
+
+            <button id="submitButtonWrapped">Enviar</button>
+        </form>
+    </div>
+    
+    <!-- Main statistics -->
+    <div class="grid-container">
+        <div class="item item1">
+            <h2 class="plot-titles">Películas favoritas del año</h2>
+            <div class="button-container-plots">
+                <button id="topReleases_button" class="plot-button selected">Estrenos</button>
+                <button id="topMovies_button" class="plot-button">Todas</button>
+            </div>
+            <div id="topReleases_id" class="posters releases"></div>
+            <div id="topMovies_id" class="posters releases" style="display: none;"></div>
+        </div>
+
+
+        <div class="item item2">
+            <div id="displayStats_id"></div>
+        </div>
+
+
+        <div class="item item3">
+            <h2 class="plot-titles">Películas vistas por día</h2>
+            <div class="canvas-container">
+                <canvas id="userDays_id" width="400" height="250"></canvas>
+            </div>
+        </div>  
+
+
+        <div class="item item4">
+            <h2 class="plot-titles">Data semanal</h2>
+            <div class="button-container-plots">
+                <button id="weeklyWatched_button" class="plot-button selected">Cantidad</button>
+                <button id="weeklyRated_button" class="plot-button">Calificaciones</button>
+            </div>
+            <canvas id="weeklyWatched_id"></canvas>
+            <canvas id="weeklyRated_id" style="display: none;"></canvas>
+        </div>
+
+
+        <div class="item item5">
+            <h2 class="plot-titles">Géneros</h2>
+            <div class="button-container-plots">
+                <button id="genresWatched_button" class="plot-button selected">Más Vistos</button>
+                <button id="genresRated_button" class="plot-button">Mejor Calificados</button>
+            </div>
+            <div class="canvas-container">
+                <canvas id="genresWatched_id" width="400" height="375"></canvas>
+                <canvas id="genresRated_id" style="display: none;" width="400" height="375"></canvas>
+            </div>
+        </div>
+
+
+        <div class="item item6">
+            <h2 class="plot-titles">Países</h2>
+            <div class="button-container-plots">
+                <button id="countriesWatched_button" class="plot-button selected">Más Vistos</button>
+                <button id="countriesRated_button" class="plot-button">Mejor Calificados</button>
+            </div>
+            <div class="canvas-container">
+                <canvas id="countriesWatched_id" width="400" height="375"></canvas>
+                <canvas id="countriesRated_id" style="display: none;" width="400" height="375"></canvas>
+            </div>
+        </div>
+
+
+        <div class="item item7">
+            <h2 class="plot-titles">Idiomas</h2>
+            <div class="button-container-plots">
+                <button id="languagesWatched_button" class="plot-button selected">Más Vistos</button>
+                <button id="languagesRated_button" class="plot-button">Mejor Calificados</button>
+            </div>
+            <div class="canvas-container">
+                <canvas id="languagesWatched_id" width="400" height="375"></canvas>
+                <canvas id="languagesRated_id" style="display: none;" width="400" height="375"></canvas>
+            </div>
+        </div>
+
+
+        <div class="item item8">
+            <h2 class="plot-titles">Actores/Actrices</h2>
+            <div class="button-container-plots">
+                <button id="actorsWatched_button" class="plot-button selected">Más Vistos</button>
+                <button id="actorsRated_button" class="plot-button">Mejor Calificados</button>
+            </div>
+            <div id="actorsWatched_id" class="posters releases"></div>
+            <div id="actorsRated_id" class="posters releases" style="display: none;"></div>
+        </div>
+        
+
+        <div class="item item9">
+            Writters, Cinematography, etc. <br>
+            Proximamente porq me dio paja
+        </div>
+
+
+        <div class="item item10">
+            <h2 class="plot-titles">Directores</h2>
+            <div class="button-container-plots">
+                <button id="directorsWatched_button" class="plot-button selected">Más Vistos</button>
+                <button id="directorsRated_button" class="plot-button">Mejor Calificados</button>
+            </div>
+            <div id="directorsWatched_id" class="posters releases"></div>
+            <div id="directorsRated_id" class="posters releases" style="display: none;"></div>
+        </div>
+
+
+        <div class="item item11">
+            <h2 class="plot-titles">Calificaciones</h2>
+            <div class="canvas-container">
+                <canvas id="ratingStars_id" width="400" height="250"></canvas>
+            </div>
+        </div>
+
+        
+        <div class="item item12">
+            <h2 class="plot-titles">Proporción de estrenos</h2>
+            <div class="canvas-container">
+                <canvas id="releasesProportions_id" style="width: 90%; height: 90%; padding-left: 30px;"></canvas>
+            </div>
+        </div>
+
+        <div class="item item23">
+            <h2 class="plot-titles">Mayor diferencia con el promedio</h2>
+            <div class="button-container-plots">
+                <button id="diffAvg_Positive_button" class="plot-button selected">Positiva</button>
+                <button id="diffAvg_Negative_button" class="plot-button">Negativa</button>
+            </div>
+            <div id="diffAvg_Positive_id" class="posters releases"></div>
+            <div id="diffAvg_Negative_id" class="posters releases" style="display: none;"></div>
+        </div>
+
+        <div class="item item23">
+            <h2 class="plot-titles">Altos y bajos</h2>
+            <div id="highAndLows_id" class="posters releases"></div>
+        </div>
+
+        <div class="item item15">
+            <h2 class="plot-titles">Pronto Pinarello 2024</h2>
+            <div class="canvas-container">
+                <canvas id="prontoMovies_id" style="width: 90%; height: 90%;"></canvas>
+            </div>
+        </div>
+
+        <div class="item item24">
+            <svg id="mapContainer"></svg>
+        </div>
+
+
+    </div>
+
+    
+
+    <script src="{{ url_for('static', filename='js/wrappedCharts.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/sidebar.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for ('static', filename='images/favicon.ico') }}">
+
+    <link rel="stylesheet" href="{{ url_for ('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='css/sidebar.css') }}">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="toggle-btn" id="toggle-btn">☰</div>
+        <nav class="menu">
+            <a href="/" class="menu-item">Home</a>
+            <a href="/ask_data" class="menu-item">Extraer Data</a>
+            <a href="/wrapped" class="menu-item">2024 Wrapped</a>
+            <a href="/letterboxd-stats" class="menu-item">Letterboxd Stats</a>
+        </nav>
+    </div>
+
+    <h1 style="text-align: center;">Data extraída con éxito!</h1>
+
+    
+    <script src="{{ url_for('static', filename='js/wrappedCharts.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/sidebar.js') }}"></script>
+</body>
+</html>

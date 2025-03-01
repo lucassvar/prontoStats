@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for ('static', filename='images/favicon.ico') }}">
+
+    <link rel="stylesheet" href="{{ url_for ('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='css/sidebar.css') }}">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="toggle-btn" id="toggle-btn">☰</div>
+        <nav class="menu">
+            <a href="/" class="menu-item">Home</a>
+            <a href="/ask_data" class="menu-item">Extraer Data</a>
+            <a href="/wrapped" class="menu-item">2024 Wrapped</a>
+            <a href="/letterboxd-stats" class="menu-item">Letterboxd Stats</a>
+        </nav>
+    </div>
+
+    <!-- User Input -->
+    <div class="input-container">
+        <form action="/submit_confirm" method="POST">
+            <label for="userInput">Usuario:</label>
+            <input type="text" id="userInput" name="userInput" placeholder="Usuario" value="stk5">
+            
+
+            <label for="all_data">Tipo de extracción: </label>
+            
+            <input type="radio" id="all_data" name="extraction_type" value="all_data">
+            <label for="all_data">Toda la data</label>
+
+            <input type="radio" id="last_movie" name="extraction_type" value="last_movie">
+            <label for="last_movie">Últ. película</label>
+
+
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    
+    <script src="{{ url_for('static', filename='js/wrappedCharts.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/sidebar.js') }}"></script>
+</body>
+</html>
