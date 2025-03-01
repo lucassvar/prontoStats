@@ -1,4 +1,3 @@
-import pandas as pd
 from bs4 import BeautifulSoup
 import requests
 from datetime import datetime, date, timedelta
@@ -6,7 +5,6 @@ import heapq
 import asyncio
 import aiohttp
 import re, json
-from sqlalchemy import create_engine
 from db_config import get_database
 
 # Connect to db
